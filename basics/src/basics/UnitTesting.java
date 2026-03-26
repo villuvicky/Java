@@ -1,17 +1,48 @@
 package basics;
 
 import java.util.Scanner;
-public class UnitTesting{
+class GrandFather{
+	String grandFatherName;
+	GrandFather(String grandFatherName){
+		this.grandFatherName=grandFatherName;
+	}
+}
 
-	public static int calculateSimple(int principal, double rate, int time) {
-	       
-		int interest=(int) (principal*rate*time/100);
-		return interest;
+class Father extends GrandFather{
 
-		    }
+	String fatherName;
+	Father(String grandFatherName, String fatherName){
+		super(grandFatherName);
+		this.fatherName=fatherName;
+	}
+}
+class Son extends Father{
 
-	public static void main (String[] args) {
-		System.out.println(calculateSimple(2000, 2.2, 4));
+	String sonName;
+
+	Son( String grandFatherName, String fatherName, String sonName){
+		super(grandFatherName, fatherName);
+		this.sonName=sonName;
 	}
 
+	public void printName(){
+
+		System.out.println("sonname: "+sonName);
+		System.out.println("fathername:: "+fatherName);
+		System.out.println("grandfather:: "+grandFatherName);
+	}
 }
+
+
+
+
+class UnitTesting {
+
+	public static void main(String args[]) {
+
+		Son s=new Son("Suresh","Ramesh","Saurabh");
+		s.printName();
+	}
+}
+
+

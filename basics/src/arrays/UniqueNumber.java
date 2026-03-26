@@ -23,6 +23,17 @@ public class UniqueNumber {
 		
 		
 	}
+	
+	public static int unique2(int arr[]) {
+		
+		 int result = 0;
+
+	        for (int num : arr) {
+	            result^= num;
+	        }
+
+	        return result;
+	}
 
 	public static void main(String[] args) {
 
@@ -36,6 +47,7 @@ public class UniqueNumber {
 			arr[i]=sc.nextInt();
 		}
 		unique(arr);
+		System.out.println(unique2(arr));
 	}
 
 }

@@ -1,9 +1,51 @@
 package arrays2;
 
+import java.util.Arrays;
+
 public class PairSum {
 
+	public static int pairSum(int[] arr, int num) {
+	    Arrays.sort(arr);
+	    int left = 0, right = arr.length - 1;
+	    int count = 0;
 
-	 public static int findTriplet(int[] arr, int x) {
+	    while (left < right) {
+	        int sum = arr[left] + arr[right];
+
+	        if (sum < num) {
+	            left++;
+	        } else if (sum > num) {
+	            right--;
+	        } else {
+	            // arr[left] + arr[right] == num
+
+	            if (arr[left] == arr[right]) {
+	                int n = right - left + 1;
+	                count += (n * (n - 1)) / 2;
+	                break;
+	            }
+
+	            int leftVal = arr[left];
+	            int rightVal = arr[right];
+	            int leftCount = 0, rightCount = 0;
+
+	            while (left < right && arr[left] == leftVal) {
+	                leftCount++;
+	                left++;
+	            }
+
+	            while (right >= left && arr[right] == rightVal) {
+	                rightCount++;
+	                right--;
+	            }
+
+	            count += leftCount * rightCount;
+	        }
+	    }
+
+	    return count;
+	}
+	 public static int findPair(int[] arr, int x) {
 	        int n = arr.length;
 	        int count = 0;
 
@@ -12,7 +54,6 @@ public class PairSum {
 	                
 	                    if (arr[i] + arr[j]  == x) {
 	                        count++;
-	                    
 	                }
 	            }
 	        }
@@ -21,9 +62,9 @@ public class PairSum {
 
 	public static void main(String[] args) {
 		
-		int [] arr=  {1, 2, 3, 4};
+		int [] arr=  {3, 2, 3, 4};
 		int x=6;
-		System.out.println(findTriplet(arr, x));
-
+		System.out.println(findPair(arr, x));
+		System.out.println(pairSum(arr, x));
 	}
 }

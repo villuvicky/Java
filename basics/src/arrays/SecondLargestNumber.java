@@ -6,10 +6,12 @@ public class SecondLargestNumber {
 	
 	public static int secondLargest_element(int arr[],int n) {
 		
-		int large=Integer.MIN_VALUE;;
-		int secondLarge=Integer.MIN_VALUE;;
+		int large=Integer.MIN_VALUE;
+		int secondLarge=Integer.MIN_VALUE;
+		System.out.println(large);
+		System.out.println(secondLarge);
 		 for (int i : arr) {
-			 
+			  
 			 if(i>large) {
 				 secondLarge=large;
 				 large=i;

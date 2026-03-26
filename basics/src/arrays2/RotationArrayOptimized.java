@@ -15,6 +15,20 @@ public class RotationArrayOptimized {
 		}
 	}
 
+	public static void direction(int arr[], int rotation, int x) {
+		int len=arr.length;
+		if(rotation==1) {
+			reverse(arr,0,len-1);
+			reverse(arr, 0, x-1);
+			reverse(arr, x, len-1);
+		}
+		else {
+			reverse(arr,0,len-1);
+			reverse(arr, 0, len-x-1);
+			reverse(arr, len-x, len-1);
+		}
+	}
+	
 	public static void main(String[] args) {
 
 		Scanner sc= new Scanner(System.in);
@@ -24,18 +38,9 @@ public class RotationArrayOptimized {
 
 		System.out.println("Enter number of rotations");
 		int x=sc.nextInt();
-		int len=A.length;
 		
-		if(rotation==1) {
-			reverse(A,0,len-1);
-			reverse(A, 0, x-1);
-			reverse(A, x, len-1);
-		}
-		else {
-			reverse(A,0,len-1);
-			reverse(A, 0, len-x-1);
-			reverse(A, len-x, len-1);
-		}
+		direction(A, rotation, x);
+		
 		for (int i : A) {
 			System.out.print(i+" ");
 		}

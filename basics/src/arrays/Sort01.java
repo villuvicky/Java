@@ -31,6 +31,9 @@ public class Sort01 {
 		
 		int array[]= {0,1,1,0,1,0,1};
 		sortZeroesAndOne(array);
+		for (int i : array) {
+			System.out.println(i);
+		}
 
 	}
 
