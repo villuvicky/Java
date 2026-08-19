@@ -2,6 +2,39 @@ package basics;
 
 import java.util.Scanner;
 
+/*
+ * Q1: Implement a console-based two-player Tic-Tac-Toe game on a 3x3
+ * board. Players alternate entering a row and column (0-2) to place
+ * their mark ('X' or 'O'); the game detects a win (3 in a row across
+ * any row, column, or diagonal), detects a draw (board full with no
+ * winner), rejects invalid/occupied moves, and switches turns after
+ * every valid move.
+ *
+ * NOTE ON DESIGN — STATIC SHARED STATE: "board" and "currentPlayer" are
+ * both declared as STATIC fields at the class level, rather than as
+ * instance fields or local variables passed between methods. This works
+ * fine for a single console game with one Scanner loop, but it means
+ * there can only ever be ONE game/board in memory at a time — you
+ * couldn't easily create two independent TicTacToe games running side
+ * by side without restructuring this into an instance-based class (with
+ * board/currentPlayer as instance fields, and a constructor). This
+ * static-everywhere style is common in small procedural console
+ * programs but becomes limiting as soon as you need multiple
+ * independent instances.
+ *
+ * IMPORTANT NOTE ON ORDER OF OPERATIONS: checkWin() is called
+ * IMMEDIATELY after placing the mark (board[row][col] = currentPlayer)
+ * but BEFORE switchPlayer() runs. This ordering is essential — checkWin()
+ * checks for 3-in-a-row belonging to "currentPlayer", so it must run
+ * while "currentPlayer" still refers to the player who just moved. If
+ * switchPlayer() were called first, checkWin() would incorrectly check
+ * for a win using the NEXT player's mark instead of the one that was
+ * just placed.
+ *
+ * NOTE: isBoardFull() is only checked AFTER confirming there's no win,
+ * so a full board with a winning line on the very last move is
+ * correctly reported as a win, not a draw.
+ */
 public class TicTacToe {
 
     static char[][] board = {
@@ -27,6 +60,7 @@ public class TicTacToe {
                 board[row][col] = currentPlayer;
                 printBoard();
 
+                // checkWin() must run BEFORE switchPlayer() (see note above)
                 if (checkWin()) {
                     System.out.println("🎉 Player " + currentPlayer + " wins!");
                     gameOver = true;
@@ -56,6 +90,7 @@ public class TicTacToe {
     }
 
     static boolean isValidMove(int row, int col) {
+        // must be within bounds AND the target cell must be empty
         return row >= 0 && row < 3 &&
                col >= 0 && col < 3 &&
                board[row][col] == ' ';
@@ -106,4 +141,3 @@ public class TicTacToe {
         return true;
     }
 }
-

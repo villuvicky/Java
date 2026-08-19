@@ -55,7 +55,7 @@ public class NumberPattern {
 		 * 321
 		 * 321
 		 * 321
-		 */
+		 */ 
 		for (int i = 0; i < n; i++) {
 
 			for (int j = 0; j < n; j++) {
@@ -258,7 +258,7 @@ public class NumberPattern {
 
 		System.out.println("********** Q12 **********");
 
-
+ 
 		/*
 		 * Q13: Print a left-aligned triangle for a given N number of rows,
 		 * where the printed numbers increase continuously (1, 2, 3, ...)
@@ -274,6 +274,7 @@ public class NumberPattern {
 		 * 456
 		 * 78910
 		 */
+		count = 0;
 		for (int i = 1; i <= n; i++) {
 			for (int j = 1; j <= i; j++) {
 				System.out.print(count = count + 1);
@@ -301,6 +302,7 @@ public class NumberPattern {
 		 *  14 15 16
 		 * 17 18 19 20
 		 */
+		count = 0;
 		for (int i = 1; i <= n; i++) {
 			for (int j = 1; j <= n - i; j++) {
 				System.out.print(" ");

@@ -65,7 +65,7 @@ public class PyramidPatterns {
          *              1
          *            2 3 4
          *          5 6 7 8 9
-         *      10 11 12 13 14 15 16
+         *      10 11 12 13 14 15  16 
          */
         int count = 0;
         for (int i = 1; i <= n; i++) {
@@ -74,7 +74,7 @@ public class PyramidPatterns {
             }
             // row i has (2*i - 1) numbers, counting continues from previous row
             for (int j = 1; j <= 2 * i - 1; j++) {
-                count = count + 1;
+                count = count + 1; 
                 System.out.print(count);
             }
             System.out.println();
@@ -202,7 +202,7 @@ public class PyramidPatterns {
             for (int j = i; j <= n; j++) {
                 System.out.print("* ");
             }
-
+   
             System.out.println();
         }
 
@@ -345,7 +345,7 @@ public class PyramidPatterns {
          *
          * NOTE: The loop bound "n - i + 1" is a common source of off-by-one
          * mistakes. Compare with Q11: Q11 grows with i (n-i not needed),
-         * while this pattern shrinks with i, hence n-i+1 (the "+1" ensures
+         * while this pattern sh rinks with i, hence n-i+1 (the "+1" ensures
          * the LAST row still prints exactly 1 star instead of 0).
          *
          * Pattern for N = 4
